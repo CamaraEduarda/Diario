@@ -23,5 +23,4 @@ TECNOLOGIAS
 
 possíveis 
 
-java com SpringBoot
-React Native 
+java com SpringBoot, React e Vercel  

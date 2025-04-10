@@ -16,3 +16,12 @@ Ainda na página principal, mais especificamente no rodapé da página, deverá 
 Ao clicar em cada postagem o usuário deverá ser levado a uma página contendo todas as informações referentes ao registro clicado, incluindo o texto completo.
 O projeto é um só por equipe e deverá ser enviado por aqui até o dia 23/04. O sistema será apresentado no dia 24/04. Cada aluno deverá apresentar o que fez, como fez e porquê fez. As notas serão individuais, sendo 40% referente a qualidade do projeto final e 60% a apresentação individual do aluno.
 O front deve utilizar React. O back e o banco ficam a critério da equipe.
+
+
+
+TECNOLOGIAS
+
+possíveis 
+
+java com SpringBoot
+React Native 

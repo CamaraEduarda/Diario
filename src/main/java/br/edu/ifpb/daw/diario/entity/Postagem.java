@@ -1,4 +1,4 @@
-package br.edu.ifpb.daw.diario;
+package br.edu.ifpb.daw.diario.entity;
 
 import java.time.LocalDateTime;
 

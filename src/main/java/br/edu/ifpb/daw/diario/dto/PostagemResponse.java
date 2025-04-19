@@ -1,6 +1,5 @@
 package br.edu.ifpb.daw.diario.dto;
 
-import java.time.LocalDateTime;
 
 public class PostagemResponse {
 
@@ -9,9 +8,9 @@ public class PostagemResponse {
     private String texto;
     private String imagemUrl;
     private String resumo;
-    private LocalDateTime dataHora;
+    private String dataHora;
 
-    public PostagemResponse(Long id, String titulo, String texto, String imagemUrl, String resumo, LocalDateTime dataHora) {
+    public PostagemResponse(Long id, String titulo, String texto, String imagemUrl, String resumo, String dataHora) {
         this.id = id;
         this.titulo = titulo;
         this.texto = texto;
@@ -19,6 +18,9 @@ public class PostagemResponse {
         this.resumo = resumo;
         this.dataHora = dataHora;
     }
+
+    //construtor vazio
+    public PostagemResponse() {}
 
     public Long getId() {
         return id;
@@ -50,10 +52,10 @@ public class PostagemResponse {
     public void setResumo(String resumo) {
         this.resumo = resumo;
     }
-    public LocalDateTime getDataHora() {
+    public String getDataHora() {
         return dataHora;
     }
-    public void setDataHora(LocalDateTime dataHora) {
+    public void setDataHora(String dataHora) {
         this.dataHora = dataHora;
     }
 

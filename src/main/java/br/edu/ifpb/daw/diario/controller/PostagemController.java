@@ -21,18 +21,22 @@ import br.edu.ifpb.daw.diario.dto.PostagemResponse;
 import br.edu.ifpb.daw.diario.service.PostagemService;
 
 @RestController
-@RequestMapping("/postagens")
+@RequestMapping("/api/postagens")
 public class PostagemController {
 
-    private PostagemService postagemService;
+    private final PostagemService postagemService;
 
-    @GetMapping("/api/postagens")
+    public PostagemController(PostagemService postagemService) {
+        this.postagemService = postagemService;
+    }
+
+    @GetMapping
     public ResponseEntity<List<PostagemResponse>> listarPostagens() {
         List<PostagemResponse> postagens = postagemService.listarTodas();
         return ResponseEntity.ok(postagens);
     }
 
-    @GetMapping("/api/postagens/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<PostagemResponse> buscarPostagemPorId(@PathVariable Long id){
         Optional<PostagemResponse> postagem = postagemService.buscarPostagemPorId(id);
         return postagem.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());  
@@ -45,14 +49,14 @@ public class PostagemController {
         return ResponseEntity.status(HttpStatus.CREATED).body(postagemSalva);
     }
 
-    @PutMapping("/api/postagens/{id}")
+    @PutMapping("/{id}")
      public ResponseEntity<PostagemResponse> atualizarPostagem(@PathVariable Long id, @RequestParam("titulo") String titulo, @RequestParam("texto") String texto, @RequestParam("imagem") String fotoUrl) {
         PostagemDTO postagemDTO = new PostagemDTO(titulo, texto, fotoUrl);
         Optional<PostagemResponse> postagemAtualizada = postagemService.atualizar(id, postagemDTO);
         return postagemAtualizada.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 
-    @DeleteMapping("/api/postagens/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletarPostagem(@PathVariable Long id) {
         postagemService.excluir(id);
         return ResponseEntity.noContent().build();

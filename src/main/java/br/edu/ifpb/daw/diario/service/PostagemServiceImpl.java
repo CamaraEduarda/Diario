@@ -4,39 +4,90 @@ import br.edu.ifpb.daw.diario.dto.PostagemDTO;
 import br.edu.ifpb.daw.diario.dto.PostagemResponse;
 import br.edu.ifpb.daw.diario.entity.Postagem;
 import br.edu.ifpb.daw.diario.repository.PostagemRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
+@Service
 public class PostagemServiceImpl implements PostagemService {
 
-    @Autowired
-    private PostagemRepository postagemRepository;
+    private final PostagemRepository postagemRepository;
+
+    public PostagemServiceImpl(PostagemRepository postagemRepository) {
+        this.postagemRepository = postagemRepository;
+    }
 
     @Override
     public PostagemResponse salvar(PostagemDTO postagemDTO) {
-        return null;
+        Postagem postagem = new Postagem();
+        postagem.setTitulo(postagemDTO.getTitulo());
+        postagem.setFotoUrl(postagemDTO.getFotoUrl());
+        postagem.setTexto(postagemDTO.getTexto());
+
+        Postagem salva = postagemRepository.save(postagem);
+        return toDTO(salva);
     }
 
     @Override
     public Optional<PostagemResponse> atualizar(Long id, PostagemDTO postagemDTO) {
-        return null;
+        Optional<Postagem> postagemOptional = postagemRepository.findById(id);
+
+        if(postagemOptional.isEmpty()){
+            return Optional.empty();
+        }
+
+        Postagem postagemAtual = postagemOptional.get();
+        postagemAtual.setTitulo(postagemDTO.getTitulo());
+        postagemAtual.setTexto(postagemDTO.getTexto());
+        postagemAtual.setFotoUrl(postagemDTO.getFotoUrl());
+
+        Postagem atualizada = postagemRepository.save(postagemAtual);
+        return Optional.of(toDTO(atualizada));
     }
 
     @Override
     public void excluir(Long id) {
-
+        if(!postagemRepository.existsById(id)) {
+            throw new IllegalArgumentException("Postagem não encontrada.");
+        }
+        postagemRepository.deleteById(id);
     }
 
     @Override
     public List<PostagemResponse> listarTodas() {
-        return List.of();
+        return postagemRepository.findAll()
+                .stream()
+                .map(this::toDTO)
+                .collect(Collectors.toList());
     }
 
     @Override
     public Optional<PostagemResponse> buscarPostagemPorId(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarPostagemPorId'");
+        return postagemRepository.findById(id).map(this::toDTO);
+    }
+
+    private String gerarResumo(String texto) {
+        if(texto.length() > 70){
+            return texto.substring(0, 70) + "...";
+        }
+        return texto;
+    }
+
+    private PostagemResponse toDTO(Postagem postagem) {
+        String resumo = gerarResumo(postagem.getTexto());
+        String dataHoraFormatada = postagem.getDataHora().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
+
+        PostagemResponse dto = new PostagemResponse();
+        dto.setId(postagem.getId());
+        dto.setTitulo(postagem.getTitulo());
+        dto.setTexto(postagem.getTexto());
+        dto.setImagemUrl(postagem.getFotoUrl());
+        dto.setResumo(resumo);
+        dto.setDataHora(dataHoraFormatada);
+
+        return dto;
     }
 }

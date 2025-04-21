@@ -14,7 +14,7 @@ public class Postagem {
     @Column(length = 80, nullable = false)
     private String titulo;
     private String texto;
-    private String fotoUrl;
+    private String imagemUrl;
     private LocalDateTime dataHora;
 
     @PrePersist
@@ -47,12 +47,12 @@ public class Postagem {
         this.texto = texto;
     }
 
-    public String getFotoUrl() {
-        return fotoUrl;
+    public String getImagemUrl() {
+        return imagemUrl;
     }
 
-    public void setFotoUrl(String fotoUrl) {
-        this.fotoUrl = fotoUrl;
+    public void setImagemUrl(String imagemUrl) {
+        this.imagemUrl = imagemUrl;
     }
 
     public LocalDateTime getDataHora() {

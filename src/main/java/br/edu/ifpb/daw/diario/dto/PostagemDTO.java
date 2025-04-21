@@ -5,12 +5,12 @@ public class PostagemDTO {
     
     private String titulo;
     private String texto;
-    private String fotoUrl;
+    private String imagemUrl;
 
-    public PostagemDTO(String titulo, String texto, String fotoUrl) {
+    public PostagemDTO(String titulo, String texto, String imagemUrl) {
         this.titulo = titulo;
         this.texto = texto;
-        this.fotoUrl = fotoUrl;
+        this.imagemUrl = imagemUrl;
     }
     
     public String getTitulo() {
@@ -25,11 +25,11 @@ public class PostagemDTO {
     public void setTexto(String texto) {
         this.texto = texto;
     }
-    public String getFotoUrl() {
-        return fotoUrl;
+    public String getImagemUrl() {
+        return imagemUrl;
     }
-    public void setFotoUrl(String fotoUrl) {
-        this.fotoUrl = fotoUrl;
+    public void setImagemUrl(String imagemUrl) {
+        this.imagemUrl = imagemUrl;
     }
 
 }

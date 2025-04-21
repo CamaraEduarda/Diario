@@ -24,7 +24,7 @@ public class PostagemServiceImpl implements PostagemService {
     public PostagemResponse salvar(PostagemDTO postagemDTO) {
         Postagem postagem = new Postagem();
         postagem.setTitulo(postagemDTO.getTitulo());
-        postagem.setFotoUrl(postagemDTO.getFotoUrl());
+        postagem.setImagemUrl(postagemDTO.getImagemUrl());
         postagem.setTexto(postagemDTO.getTexto());
 
         Postagem salva = postagemRepository.save(postagem);
@@ -42,7 +42,7 @@ public class PostagemServiceImpl implements PostagemService {
         Postagem postagemAtual = postagemOptional.get();
         postagemAtual.setTitulo(postagemDTO.getTitulo());
         postagemAtual.setTexto(postagemDTO.getTexto());
-        postagemAtual.setFotoUrl(postagemDTO.getFotoUrl());
+        postagemAtual.setImagemUrl(postagemDTO.getImagemUrl());
 
         Postagem atualizada = postagemRepository.save(postagemAtual);
         return Optional.of(toDTO(atualizada));
@@ -84,7 +84,7 @@ public class PostagemServiceImpl implements PostagemService {
         dto.setId(postagem.getId());
         dto.setTitulo(postagem.getTitulo());
         dto.setTexto(postagem.getTexto());
-        dto.setImagemUrl(postagem.getFotoUrl());
+        dto.setImagemUrl(postagem.getImagemUrl());
         dto.setResumo(resumo);
         dto.setDataHora(dataHoraFormatada);
 

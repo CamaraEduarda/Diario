@@ -3,16 +3,14 @@ package br.edu.ifpb.daw.diario.controller;
 import java.util.List;
 import java.util.Optional;
 
-import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import br.edu.ifpb.daw.diario.dto.PostagemDTO;
 import br.edu.ifpb.daw.diario.dto.PostagemResponse;
 import br.edu.ifpb.daw.diario.service.PostagemService;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/postagens")

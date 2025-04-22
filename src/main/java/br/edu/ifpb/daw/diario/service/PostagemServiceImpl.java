@@ -78,7 +78,7 @@ public class PostagemServiceImpl implements PostagemService {
 
     private PostagemResponse toDTO(Postagem postagem) {
         String resumo = gerarResumo(postagem.getTexto());
-        String dataHoraFormatada = postagem.getDataHora().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
+        String dataHoraFormatada = postagem.getDataHora() != null ? postagem.getDataHora().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")): "";
 
         PostagemResponse dto = new PostagemResponse();
         dto.setId(postagem.getId());

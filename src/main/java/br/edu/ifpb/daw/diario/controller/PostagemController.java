@@ -3,6 +3,7 @@ package br.edu.ifpb.daw.diario.controller;
 import java.util.List;
 import java.util.Optional;
 
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -36,7 +37,7 @@ public class PostagemController {
     }
 
     @PostMapping
-    public ResponseEntity<PostagemResponse> salvarPostagem(@RequestBody PostagemDTO postagemDTO) {
+    public ResponseEntity<PostagemResponse> salvarPostagem(@Valid @RequestBody PostagemDTO postagemDTO) {
 
         PostagemResponse postagemSalva = postagemService.salvar(postagemDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(postagemSalva);

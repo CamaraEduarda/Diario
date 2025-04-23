@@ -16,6 +16,8 @@ public class PostagemDTO {
     @NotBlank(message = "A URL da imagem não pode estar em branco.")
     private String imagemUrl;
 
+    public PostagemDTO(){}
+
     public PostagemDTO(String titulo, String texto, String imagemUrl) {
         this.titulo = titulo;
         this.texto = texto;

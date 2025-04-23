@@ -1,0 +1,189 @@
+.pagina {
+    padding: 20px;
+    background: #fafafa;
+    min-height: 100vh;
+}
+
+.diario-header {
+    background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    color: white;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Arial', sans-serif;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.diario-header h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.carregando {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 40px;
+    color: #555;
+}
+
+.postagem-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.post-card {
+    width: 300px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    color: white;
+    font-family: Arial, sans-serif;
+    position: relative;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+}
+
+.profile-pic {
+    width: 30px;
+    height: 30px;
+    background: #fff;
+    border-radius: 50%;
+}
+
+.username {
+    font-weight: bold;
+}
+
+.post-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.post-content {
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.post-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    font-size: 14px;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* 🌐 Responsivo */
+@media (max-width: 600px) {
+    .postagem-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .post-card {
+        width: 90%;
+    }
+
+    .diario-header h1 {
+        font-size: 22px;
+    }
+}
+
+.post-actions {
+    display: flex;
+    justify-content: space-around;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.post-actions button {
+    background-color: rgba(255, 255, 255, 0.15);
+    border: none;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.post-actions button:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.edit-form input,
+.edit-form textarea {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    resize: vertical;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.form-buttons button {
+    padding: 8px 12px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    transition: 0.3s;
+}
+
+.form-buttons button:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.float-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    color: white;
+    font-size: 28px;
+    border: none;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    font-family: 'Arial', sans-serif;
+}
+
+.float-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}

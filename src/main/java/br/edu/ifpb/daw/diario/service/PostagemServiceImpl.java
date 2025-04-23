@@ -70,8 +70,8 @@ public class PostagemServiceImpl implements PostagemService {
     }
 
     private String gerarResumo(String texto) {
-        if(texto.length() > 70){
-            return texto.substring(0, 70) + "...";
+        if(texto.length() > 50){
+            return texto.substring(0, 50) + "...";
         }
         return texto;
     }
